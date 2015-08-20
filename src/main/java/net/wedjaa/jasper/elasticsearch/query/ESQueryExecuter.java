@@ -66,10 +66,12 @@ public class ESQueryExecuter extends JRAbstractQueryExecuter {
 			boolean directParameters) {
 		super(jasperReportsContext, dataset, parameters);
 		
-		JasperReport report = (JasperReport) parameters.get(JRFillParameter.JASPER_REPORT).getValue();
-		if ( report != null) {
-			logger.debug("ESQueryExecuter for report: " + report.getName());
-			logger.debug("Report query: " + report.getQuery().getText());
+		if(logger.isDebugEnabled() && parameters.get(JRFillParameter.JASPER_REPORT) != null) {
+			JasperReport report = (JasperReport) parameters.get(JRFillParameter.JASPER_REPORT).getValue();
+			if ( report != null) {
+				logger.debug("ESQueryExecuter for report: " + report.getName());
+				logger.debug("Report query: " + report.getQuery().getText());
+			}
 		}
 		if ( logger.isTraceEnabled() ) {
 			for (String param: parameters.keySet()) {
