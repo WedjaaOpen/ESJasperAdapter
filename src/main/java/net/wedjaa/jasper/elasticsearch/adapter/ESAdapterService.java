@@ -25,6 +25,7 @@ import org.apache.log4j.Logger;
 import net.sf.jasperreports.data.AbstractDataAdapterService;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRParameter;
+import net.sf.jasperreports.engine.JasperReportsContext;
 import net.wedjaa.elasticparser.ESSearch;
 
 /**
@@ -47,8 +48,8 @@ public class ESAdapterService extends AbstractDataAdapterService {
     private final ESAdapter dataAdapter;
     private static Logger logger = Logger.getLogger(ESAdapterService.class);
 
-    @SuppressWarnings("deprecation")
-	public ESAdapterService(ESAdapter dataAdapter) {
+	public ESAdapterService(JasperReportsContext jrContext, ESAdapter dataAdapter) {
+    	super(jrContext, dataAdapter);
         this.dataAdapter = dataAdapter;
         this.esSearch = null;
         logger.debug("Just created a new ESAdapterService with a dataAdapter");
