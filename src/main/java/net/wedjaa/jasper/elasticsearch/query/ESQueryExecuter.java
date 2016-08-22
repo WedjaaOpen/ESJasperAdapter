@@ -163,9 +163,9 @@ public class ESQueryExecuter extends JRAbstractQueryExecuter {
 			builder.append("[");
 			for (Object value : (Collection<?>) parameterValue) {
 				if (value instanceof String) {
-					builder.append("'");
+					builder.append("\"");
 					builder.append(value);
-					builder.append("'");
+					builder.append("\"");
 				} else {
 					builder.append(String.valueOf(value));
 				}
